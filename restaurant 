@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joy & Juice | Fresh Juices & Healthy Snacks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFD166;
+            --light: #F7FFF7;
+            --dark: #1A535C;
+            --text: #333333;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f7fff7 0%, #e6f7f5 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        img {
+            max-width: 100%;
+            transition: var(--transition);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(247, 255, 247, 0.95);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 8px;
+            color: var(--secondary);
+        }
+
+        /* Navigation Styles */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            transition: var(--transition);
+            padding: 8px 0;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(26, 83, 92, 0.6), rgba(26, 83, 92, 0.6)), url('https://images.unsplash.com/photo-1603569283847-aa295f0d016a?q=80') no-repeat center center/cover;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 650px;
+            color: white;
+            z-index: 2;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            color: white;
+            font-size: 4.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.2) 0%, rgba(255, 107, 107, 0.2) 100%);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Menu Section */
+        .menu {
+            background: linear-gradient(to bottom, #f7fff7 0%, #e6f7f5 100%);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .menu-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .menu-item:hover .menu-img img {
+            transform: scale(1.05);
+        }
+
+        .menu-content {
+            padding: 20px;
+        }
+
+        .menu-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .menu-content h3 span {
+            color: var(--primary);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: white;
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info, .contact-form {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail i {
+            width: 50px;
+            height: 50px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-right: 15px;
+        }
+
+        .contact-form form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .footer-col p {
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .opening-hours p {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* 3D Lighting Effects */
+        .light-effect {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 209, 102, 0.4) 0%, transparent 70%);
+            filter: blur(60px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .light-1 {
+            top: 20%;
+            left: 10%;
+            animation: float 12s infinite ease-in-out;
+        }
+
+        .light-2 {
+            bottom: 20%;
+            right: 10%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(20px, -20px);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            .about-content, .contact-container {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: var(--transition);
+            }
+            
+            nav.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px 0;
+            }
+            
+            nav ul li {
+                margin: 0;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 15px 30px;
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 3D Lighting Effects -->
+    <div class="light-effect light-1"></div>
+    <div class="light-effect light-2"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo"><i class="fas fa-glass-cheers"></i> Joy & Juice</a>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Fresh Juices & Healthy Delights</h1>
+            <p>Revitalizing blends and delicious snacks in the heart of Malmö</p>
+            <div class="hero-btns">
+                <a href="#menu" class="btn">Explore Menu</a>
+                <a href="#contact" class="btn btn-outline">Reserve Table</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>Our Story</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Welcome to Joy & Juice, where we transform fresh ingredients into vibrant, delicious creations. Founded in 2018, we've been Malmö's favorite destination for healthy refreshments and energizing snacks.</p>
+                    <p>Our journey began with a simple philosophy: great taste doesn't have to compromise on nutrition. We source only the freshest seasonal produce from local farmers and combine them with innovative recipes.</p>
+                    <p>Each juice and snack is carefully crafted by our passionate team who treat food preparation as an art form. From classic cold-pressed juices to creative smoothie bowls, we delight your senses with every sip and bite.</p>
+                    <p>At Joy & Juice, we believe that healthy eating should be joyful and accessible to everyone. We're proud to be part of Malmö's vibrant wellness community.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a?q=80" alt="Joy & Juice Bar Interior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <h2>Our Specialties</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?q=80" alt="Tropical Bliss">
+                    </div>
+                    <div class="menu-content">
+                        <h3>Tropical Bliss <span>45 SEK</span></h3>
+                        <p>Pineapple, mango, passion fruit and coconut water blend.</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="https://images.unsplash.com/photo-1605270012917-bf157c5a9541?q=80" alt="Green Detox">
+                    </div>
+                    <div class="menu-content">
+                        <h3>Green Detox <span>42 SEK</span></h3>
+                        <p>Kale, spinach, cucumber, apple, lemon and ginger.</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80" alt="Berry Burst">
+                    </div>
+                    <div class="menu-content">
+                        <h3>Berry Burst <span>48 SEK</span></h3>
+                        <p>Mixed berries, banana, almond milk and chia seeds.</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80" alt="Sunset Cocktail">
+                    </div>
+                    <div class="menu-content">
+                        <h3>Sunset Cocktail <span>65 SEK</span></h3>
+                        <p>Orange, carrot, turmeric and ginger with a splash of lime.</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="https://images.unsplash.com/photo-1559715745-e1b33a271c8f?q=80" alt="Avocado Toast">
+                    </div>
+                    <div class="menu-content">
+                        <h3>Avocado Toast <span>68 SEK</span></h3>
+                        <p>Sourdough bread with smashed avocado, cherry tomatoes and microgreens.</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?q=80" alt="Acai Bowl">
+                    </div>
+                    <div class="menu-content">
+                        <h3>Acai Bowl <span>75 SEK</span></h3>
+                        <p>Acai berry blend topped with granola, banana and seasonal fruits.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="cont
